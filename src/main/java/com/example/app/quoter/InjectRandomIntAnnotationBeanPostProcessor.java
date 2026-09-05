@@ -1,6 +1,5 @@
 package com.example.app.quoter;
 
-import com.example.app.repository.UserRepository;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
@@ -22,16 +21,16 @@ public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProce
                 int max = injectRandom.max();
                 int value = min + new Random().nextInt(max - min);
                 ReflectionUtils.setField(field, bean, value);
-                System.out.println("Set random value to " + value);
+//                System.out.println("Set random value to " + value);
             }
         }
-        System.out.println("BPP Before Initialization " + bean.getClass().getSimpleName());
+//        System.out.println("BPP Before Initialization " + bean.getClass());
         return bean;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("Empty method postProcessAfterInitialization on name " + bean.getClass().getSimpleName());
+//        System.out.println("BPP After Initialization" + bean.getClass());
         return bean;
     }
 }

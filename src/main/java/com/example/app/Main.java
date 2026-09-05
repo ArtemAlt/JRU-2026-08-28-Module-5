@@ -1,9 +1,8 @@
 package com.example.app;
 
-import com.example.app.controller.UserController;
-import com.example.app.many.MyClass1;
-import com.example.app.many.MyClass2;
 import com.example.app.quoter.TerminatorQuoter;
+import com.example.app.service.AuthorizationService;
+import com.example.app.service.CommonService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -14,8 +13,12 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 //        UserController bean = context.getBean(UserController.class);
 //        bean.start();
-        TerminatorQuoter bean = context.getBean(TerminatorQuoter.class);// interface
-        bean.sayQuote();
+//        TerminatorQuoter bean = context.getBean(TerminatorQuoter.class);// interface
+//        bean.sayQuote();
+        CommonService authorizationService = context.getBean(CommonService.class);
+        Boolean dfgdff = authorizationService.auth("dfgdff");
+        System.out.println(dfgdff);
+
         System.out.println("======END========");
 
     }
