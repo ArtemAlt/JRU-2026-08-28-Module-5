@@ -1,6 +1,8 @@
 package com.example.app.service;
 
 import com.example.app.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.app.repository.UserRepository;
@@ -8,9 +10,10 @@ import com.example.app.repository.UserRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@Service // @Component
+@Service
 public class UserService {
     private final UserRepository repository;
+    private final Logger log = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     public UserService(UserRepository repository) {
@@ -21,6 +24,19 @@ public class UserService {
     public User createUser(User user) {
         return repository.save(user);
     }
+
+//    public User getUserById(Long id) {
+//        log.info("getUserById with id: " + id);
+//        User found = null;
+//        try {
+//            found = repository.findById(id)
+//                    .orElseThrow(() -> new NoSuchElementException("User not found"));
+//        } catch (NoSuchElementException e) {
+//            log.info("User not found by id: " + id);
+//        }
+//        log.info("found user name: " + found.getName());
+//        return found;
+//    }
 
     public User getUserById(Long id) {
         return repository.findById(id)

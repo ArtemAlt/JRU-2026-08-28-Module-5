@@ -34,16 +34,16 @@ public class UserController {
             scanner.nextLine();
 
             switch (choice) {
-//                case 1: -> createUser(scanner);
-//                case 2 -> listUsers();
-//                case 3 -> getUserById(scanner);
-//                case 4 -> updateUser(scanner);
-//                case 5 -> deleteUser(scanner);
-//                case 6 -> {
-//                    System.out.println("Goodbye!");
-//                    return;
-//                }
-//                default -> System.out.println("Invalid choice!");
+                case 1:  createUser(scanner);
+                case 2 : listUsers();
+                case 3 : getUserById(scanner);
+                case 4 : updateUser(scanner);
+                case 5 : deleteUser(scanner);
+                case 6 : {
+                    System.out.println("Goodbye!");
+                    return;
+                }
+                default : System.out.println("Invalid choice!");
             }
         }
     }

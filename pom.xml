@@ -36,7 +36,26 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Spring AOP -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
+        <!-- AspectJ Weaver (обязательно) -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.22</version>  <!-- Для Spring 5.x используйте 1.9.x -->
+        </dependency>
+
+        <!-- AspectJ Runtime (рекомендуется) -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.22</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>

@@ -1,5 +1,6 @@
 package com.example.app;
 
+import com.example.app.controller.UserController;
 import com.example.app.quoter.TerminatorQuoter;
 import com.example.app.service.AuthorizationService;
 import com.example.app.service.CommonService;
@@ -15,11 +16,18 @@ public class Main {
 //        bean.start();
 //        TerminatorQuoter bean = context.getBean(TerminatorQuoter.class);// interface
 //        bean.sayQuote();
-        CommonService authorizationService = context.getBean(CommonService.class);
-        Boolean dfgdff = authorizationService.auth("dfgdff");
-        System.out.println(dfgdff);
-
+//        CommonService authorizationService = context.getBean(CommonService.class);
+//        Boolean dfgdff = authorizationService.auth("dfgdff");
+//        System.out.println(dfgdff);
+        UserController bean = context.getBean(UserController.class);
+        bean.start();
         System.out.println("======END========");
 
     }
 }
+/*
+Join point
+Pointcut
+Advice
+Aspect
+ */
