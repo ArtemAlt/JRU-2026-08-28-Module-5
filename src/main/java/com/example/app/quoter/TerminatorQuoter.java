@@ -1,9 +1,9 @@
 package com.example.app.quoter;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 
 @Component
 @DeprecatedClass(newImpl = T1000.class)

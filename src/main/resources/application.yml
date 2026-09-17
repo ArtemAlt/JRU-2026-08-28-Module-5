@@ -1,0 +1,25 @@
+app:
+  greeting:
+    message: "Welcome"
+    count: 3
+    enabled: true
+    services:
+      - service1.url.com
+      - service2.url.com
+      - service3.url.com
+    properties:
+      prop1: Welcome
+      prop2: 5
+      prop: prpos
+      val: some
+  jdbc: true
+  user:
+    admin: "admin"
+  name: "My-App"
+spring:
+  datasource:
+    url: "jdbc:"
+    username: ${SCP_DB_USER_NAME}
+    password: ${SCP_DB_PASSWORD}
+server:
+  port: ${SERVER_PORT:8080}
