@@ -18,8 +18,20 @@ app:
   name: "My-App"
 spring:
   datasource:
-    url: "jdbc:"
-    username: ${SCP_DB_USER_NAME}
-    password: ${SCP_DB_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/bankdb
+    username: admin
+    password: secret
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
 server:
   port: ${SERVER_PORT:8080}
