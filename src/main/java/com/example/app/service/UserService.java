@@ -1,6 +1,7 @@
 package com.example.app.service;
 
 import com.example.app.model.User;
+import com.example.app.model.UserCreate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        return repository.save(user);
+    }
+    public User createUser(UserCreate userCreate) {
+        User user = new User(null, userCreate.getName(), userCreate.getEmail(), userCreate.getAge());
         return repository.save(user);
     }
 
