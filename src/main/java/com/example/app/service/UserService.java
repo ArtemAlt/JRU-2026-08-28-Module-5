@@ -1,7 +1,8 @@
 package com.example.app.service;
 
+import com.example.app.exeptions.ResourceNotFoundException;
 import com.example.app.model.User;
-import com.example.app.model.UserCreate;
+import com.example.app.model.CreateUserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class UserService {
     public User createUser(User user) {
         return repository.save(user);
     }
-    public User createUser(UserCreate userCreate) {
+    public User createUser(CreateUserDto userCreate) {
         User user = new User(null, userCreate.getName(), userCreate.getEmail(), userCreate.getAge());
         return repository.save(user);
     }
@@ -45,7 +46,7 @@ public class UserService {
 
     public User getUserById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("user", id));
     }
 
     public List<User> getAllUsers() {

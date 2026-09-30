@@ -1,11 +1,25 @@
 package com.example.app.model;
 
-public class UserCreate {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
+public class CreateUserDto {
+    @NotBlank(message = "Name must be not empty")
+    @Size(min = 3, max = 30)
     private String name;
+    @NotBlank
+    @Email(message = "Email not valid")
     private String email;
+    @Min(value = 0, message = "Age not negative")
+    @Positive(message = "Age positive")
     private int age;
 
-    public UserCreate(String name, String email, int age) {
+    public CreateUserDto(String name, String email, int age) {
         this.name = name;
         this.email = email;
         this.age = age;
