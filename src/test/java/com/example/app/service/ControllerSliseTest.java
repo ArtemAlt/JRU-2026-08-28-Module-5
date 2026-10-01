@@ -1,20 +1,16 @@
 package com.example.app.service;
 
-import com.example.app.account.BankTransferService;
 import com.example.app.controller.DemoController;
 import com.example.app.model.CreateUserDto;
 import com.example.app.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.startsWith;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -28,6 +24,8 @@ class ControllerSliseTest {
 
     @MockBean
     private UserService userService;
+    @MockBean
+    private CreateUserValidator validator;
 
     @Test
     void createUserTest() throws Exception {
