@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: developer
+      context: dev,test
+      changes:
+        - insert:
+            tableName: orders
+            columns:
+              - column:
+                  name: customer_name
+                  value: "Reference Customer 1"
+              - column:
+                  name: total_amount
+                  value: 50.00
+              - column:
+                  name: status
+                  value: "NEW"

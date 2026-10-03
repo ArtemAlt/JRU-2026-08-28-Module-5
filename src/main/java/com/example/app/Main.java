@@ -1,8 +1,5 @@
 package com.example.app;
 
-import com.example.app.account.Account;
-import com.example.app.account.AccountRepository;
-import com.example.app.account.BankTransferService;
 import com.example.app.service.GreetingService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

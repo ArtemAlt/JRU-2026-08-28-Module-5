@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: developer
+      changes:
+        - insert:
+            tableName: orders
+            columns:
+              - column:
+                  name: customer_name
+                  value: "Alice"
+              - column:
+                  name: total_amount
+                  value: 100.00
+              - column:
+                  name: status
+                  value: "NEW"
+        - insert:
+            tableName: orders
+            columns:
+              - column:
+                  name: customer_name
+                  value: "Bob"
+              - column:
+                  name: total_amount
+                  value: 250.00
+              - column:
+                  name: status
+                  value: "PROCESSING"
