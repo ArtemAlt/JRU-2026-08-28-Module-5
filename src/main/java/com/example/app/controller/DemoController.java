@@ -5,7 +5,9 @@ import com.example.app.model.CreateUserDto;
 import com.example.app.service.CreateUserValidator;
 import com.example.app.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -95,18 +97,18 @@ public class DemoController {
     // -H "Content-Type: application/json"
     // -d '[{"name":"Bob3", "email":"bob4.gogle.com", "age":30}, {"name":"Bob2", "email":"bob4.gogle.com", "age":30},
     // {"name":"Bob1", "email":"bob4.gogle.com", "age":30}]'
-
-    public String createUser(@Valid @RequestBody CreateUserDto user, BindingResult bindingResult) {
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<ResponseUserDto> createUser(@Valid @RequestBody CreateUserDto user, BindingResult bindingResult) {
 //        validator.validateUser(user);
-        if (bindingResult.hasErrors()) {
-            Map<String, String> errors = new HashMap<>();
-            bindingResult.getFieldErrors().forEach(error ->
-                    errors.put(error.getField(), error.getDefaultMessage())
-            );
-            return errors.toString();
-        }
+//        if (bindingResult.hasErrors()) {
+//            Map<String, String> errors = new HashMap<>();
+//            bindingResult.getFieldErrors().forEach(error ->
+//                    errors.put(error.getField(), error.getDefaultMessage())
+//            );
+//            return errors.toString();
+//        }
         User user1 = service.createUser(user);
-        return "User created with ID: " + user1.getId();
+        return ResponseEntity.status(201).body(new ResponseUserDto(user1));
     }
 
     @GetMapping("/user/{id}")

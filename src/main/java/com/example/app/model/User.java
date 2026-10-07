@@ -5,6 +5,8 @@ public class User {
     private String name;
     private String email;
     private int age;
+//    private String password;
+//    private String userToken;
 
     public User(Long id, String name, String email, int age) {
         this.id = id;

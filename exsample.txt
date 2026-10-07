@@ -1,0 +1,51 @@
+query {
+  user(id: 1) {
+    name
+    email
+    orders {
+      total
+    }
+  }
+}
+// RPC-стиль
+POST /api/createUser
+POST /api/deleteUser
+POST /api/sendEmail
+
+GET /users           Ч получить всех
+GET /users/1         Ч получить одного
+POST /users          Ч создать
+PUT /users/1         Ч обновить
+DELETE /users/1      Ч удалить
+
+GET    получить           +
+POST   создать            -
+DELETE удалить            +
+PUT    обновить полностью +
+PATCH  обновить частично  +/-
+
+
+GET /api/v1/users           Ч получить всех
+GET /api/v1/users/1         Ч получить одного
+POST /api/v1/users          Ч создать
+PUT /api/v1/users/1         Ч обновить
+DELETE /api/v1/users/1      Ч удалить
+
+GET /api/v2/users           Ч получить всех
+GET /api/v2/users/1         Ч получить одного
+
+# «апрос v1
+curl -H "Accept-Version: 1.0" http://localhost:8080/api/users
+
+# «апрос v2
+curl -H "Accept-Version: 2.0" http://localhost:8080/api/users
+
+http://localhost:3000
+http://localhost:8080
+
+
+
+Access to fetch at 'http://localhost:8080/api/users' from origin 'http://localhost:3000'
+has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present.
+
+SOP - Same-Origin Policy
