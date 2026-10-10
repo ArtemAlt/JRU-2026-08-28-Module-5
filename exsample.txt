@@ -49,3 +49,76 @@ Access to fetch at 'http://localhost:8080/api/users' from origin 'http://localho
 has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present.
 
 SOP - Same-Origin Policy
+
+
+DDD - Restoration
+Заказ - Меню
+    - crud блюдо
+    - crud
+    - crud
+пользователь
+    - cru Заказ
+Оплата
+    - crud Заказ
+ACID оплата
+
+
+SHOP
+    services
+        UserService
+        ProductService
+        OrderService
+            ACIDService
+        CartService
+    controller
+        UserController
+        ProductController
+        OrderController
+        CartController
+    repository
+        UserRepository
+        ProductRepository
+        OrderRepository
+        CartRepository
+
+SHOP-MM
+- синхронизировать АПИ
+    - синхронная
+        - http
+    - асинхронная
+        - брокеры
+user-service
+    регистрация, авторизация, профиль
+product-service
+    каталог, поиск
+order-service
+    создать заказ, посмотреть его статус
+store-service
+    остатки товаров
+payment-service
+    провести платеж
+notification-service - брокер
+    уведомления пользователей sms, push, email
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
