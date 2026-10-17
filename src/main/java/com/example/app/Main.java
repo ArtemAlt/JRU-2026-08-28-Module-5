@@ -1,16 +1,12 @@
 package com.example.app;
 
-import com.example.app.service.GreetingService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.ConfigurableApplicationContext;
-
-import java.math.BigDecimal;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+@EnableFeignClients
 public class Main implements CommandLineRunner {
 //    private final BankTransferService bankTransferService;
 //    private final AccountRepository accountRepository;

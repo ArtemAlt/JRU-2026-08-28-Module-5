@@ -87,28 +87,95 @@ SHOP-MM
         - http
     - асинхронна€
         - брокеры
-user-service
+---------------------------
+user-service :8081
     регистраци€, авторизаци€, профиль
-product-service
+product-service :8082
     каталог, поиск
-order-service
+order-service :8083
     создать заказ, посмотреть его статус
-store-service
+store-service :8084
     остатки товаров
-payment-service
+payment-service :8085
     провести платеж
-notification-service - брокер
+notification-service :8086 - брокер
     уведомлени€ пользователей sms, push, email
+BD - 4 : 8090 - 8093
 
+UI : 8080
+API GATEWAY - авторизаци€, фильтры, маршрутизаци€, CORS
+------------------------------
+UI -> AG -> M#?
+-------------------------------
+SERVICE DISCOVERY
 
+UserService -> SD (Eureka) - € сервис user и мой 10.0.0.5:8080 - регистрации
 
+UI ->  SD ->  где user -> 10.0.0.5:8080
+---------------------------------
+UI -> AG -> SD -> M#?
+----------------------------------
+Circular Breaker
+-------------------------------
+CONFIG SERVER + хранилище секретов (тест - прод)
+-----------------------------
+DISTRIBUTED TRACING (сквозна€ трассировка)
+—оздать заказ
+UI (traceID = abc123) spanId: A
+    AG - traceID = abc123  10 ms   spanId:B(parent:A)
+    SD - traceID = abc123  15 ms   spanId:C(parent:B)
+    OR - traceID = abc123  50 ms   spanId:D(parent:C)
+    SR - traceID = abc123  50 ms
+    PA - traceID = abc123  200 ms
+--------------------------
+CENTRALIZED LOGGING (ELK)
+AG -
+SD - Logstash - Elasticsearch - Kibana
+OR -
+PA -
+---------------------------
 
+Web App    -  WBFF     - OS
+Mobile App -  MBFF     - OS
+REST App   -  RBFF     - OS
+---------------------------
+SAGA - распределенные транзакции
+---------------------------
+SIDECAR - контейнер
+---------------------------
+Transaction outbox
+ SC - блокирует остатки - http - PS - ok
+ SC -t- блокирует остатки (PENDING) -t- создаем запись в Ѕƒ о событие платежа -t- в фоне раз в 10 сек идет в Ѕƒ о новых событи€х - если запись есть - http - PS - ok
+  -t- событие переводим в статус обработано -t- остатки переводим в статус (PAYD)
+----------------------------
+IDEMPOTENCY KEY
+—оздать заказ * 2
+UI (traceID = abc123)
+    AG - traceID = abc123  10 ms
+    SD - traceID = abc123  15 ms  Queue<Request>
+    OR - traceID = abc123  5000 ms
+    SR - traceID = abc123
+    PA - traceID = abc123
+--------------------------
+RATE LIMITING
+Limit Window Key(ip, ”«)
+10     1 сек  ”«
+-------------------------
+SemVer - версионирование
+MAJOR.MINOR.PATCH
+1.0.0 - новый сервис
+1.0.1 - bag fix
+1.2.0 - new api
+2.0.0 - brake old api
 
-
-
-
-
-
+1.1.1-RC - release candidate
+------------------------------
+Resilience4j
+-----------------------------
+OpenFeign
+RestTemplate
+Eureka
+-----------------------------
 
 
 

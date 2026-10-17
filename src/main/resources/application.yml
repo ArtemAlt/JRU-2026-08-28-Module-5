@@ -19,7 +19,7 @@ app:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bankdb
-    username: admin
+    username: ${DB_USER}
     password: secret
     driver-class-name: org.postgresql.Driver
   jpa:

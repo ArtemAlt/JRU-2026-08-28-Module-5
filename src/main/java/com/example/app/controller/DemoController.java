@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,10 +110,10 @@ public class DemoController {
         return ResponseEntity.status(201).body(new ResponseUserDto(user1));
     }
 
-    @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable("id") Long id) {
-        return service.getUserById(id);
-    }
+//    @GetMapping("/user/{id}")
+//    public User getUserById(@PathVariable("id") Long id) {
+//        return service.getUserById(id);
+//    }
 
 //    @ExceptionHandler
 //    public String exceptionHandler(NoSuchElementException ex) {

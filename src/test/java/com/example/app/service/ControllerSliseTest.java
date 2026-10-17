@@ -23,7 +23,7 @@ class ControllerSliseTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private UserService userService;
+    private UserServiceImpl userService;
     @MockBean
     private CreateUserValidator validator;
 

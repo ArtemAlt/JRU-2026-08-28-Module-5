@@ -3,17 +3,17 @@ package com.example.app.controller;
 import com.example.app.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import com.example.app.service.UserService;
+import com.example.app.service.UserServiceImpl;
 
 import java.util.List;
 import java.util.Scanner;
 
 @Controller
 public class UserController {
-    private final UserService service;
+    private final UserServiceImpl service;
 
     @Autowired
-    public UserController(UserService service) {
+    public UserController(UserServiceImpl service) {
 //        System.out.println("[UserController] UserService created with " + service.getClass().getSimpleName());
         this.service = service;
     }
