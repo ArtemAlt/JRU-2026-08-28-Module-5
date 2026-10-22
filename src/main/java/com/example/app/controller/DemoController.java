@@ -3,6 +3,7 @@ package com.example.app.controller;
 import com.example.app.model.User;
 import com.example.app.model.CreateUserDto;
 import com.example.app.service.CreateUserValidator;
+import com.example.app.service.GreetingService;
 import com.example.app.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -23,10 +24,12 @@ import java.util.Map;
 public class DemoController {
     private final UserService service;
     private final CreateUserValidator validator;
+    private final GreetingService greetingService;
 
-    public DemoController(UserService service, CreateUserValidator validator) {
+    public DemoController(UserService service, CreateUserValidator validator, GreetingService greetingService) {
         this.service = service;
         this.validator = validator;
+        this.greetingService = greetingService;
     }
 
     @GetMapping("/hello")
@@ -37,6 +40,7 @@ public class DemoController {
     @GetMapping("/search") // http://localhost:8080/search?variable=World&number=10
     public String search(@RequestParam(value = "variable", defaultValue = "Zero") String name, @RequestParam Integer number) {
         if (name == null) {
+            greetingService.someMethod();
             return "Hello World!!!!!";
         } else {
             return "Вы искали: " + name + " количество: " + number;

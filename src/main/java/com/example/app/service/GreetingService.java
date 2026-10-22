@@ -1,5 +1,6 @@
 package com.example.app.service;
 
+import com.example.app.out.HelloClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -15,6 +16,11 @@ public class GreetingService {
     private Integer count;
     private Boolean enabled;
     private List<String> services;
+    private final HelloClient helloClient;
+
+    public GreetingService(HelloClient helloClient) {
+        this.helloClient = helloClient;
+    }
 
     public Map<String, String> getProperties() {
         return properties;
@@ -61,5 +67,11 @@ public class GreetingService {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public void someMethod() {
+        System.out.println("Hello World");
+        String hello = helloClient.hello();
+        System.out.println(hello);
     }
 }
