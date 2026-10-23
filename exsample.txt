@@ -206,9 +206,71 @@ At-most-once  - будет одно, оно может потеряться - логи метрики
 At-least-once - доставлю одно, но может быть дубль (дедуликация) - заказы, бизнес процессы
 Exactly-once  - точно одно - критически важных бизнес процессах
 --------------------
+Pub - Sub
 Producer - [1.2.3] - Broker - {[f.y.j] n=0} {[e.7.8] n=0}   - Consumer #1
 DLQ - Dead Letter Queue {[1.2.3] n=3} - Consumer #2 / Producer
 --------------------
+Routing Key и Binding Key.
+Direct Exchange
+    Routing Key = "pdf_create"
+    Binding Key = "pdf_create"
+    Binding Key = "pdf_log"
+Fanout Exchange
+    во все привязанные очереди
+    q1 - c1
+    q2 - c2 + c3
+    q3 - c4
+Topic Exchange
+    Routing Key = order.created.eu
+    Binding Key = *. - #
+    Q1 = *.orange.*
+    Q2 = *.*.rabbit  + lazy.#
+    MSG1 = quick.orange.rabbit Q1 + Q2
+    MSG2 = quick.orange.fox Q1
+    MSG3 = quick.apple.rabbit Q2
+    MSG4 = lazy.berry.fox Q2
+--------------------------
+KRaft (Kafka Raft)
+
+Topic #1
+------------------
+Partition #1
+    t1-p1-2 - t1-p1-1  - t1-p1-0
+    msg---------msg--------msg
+Partition #2
+    msg-msg-msg
+Partition #3
+    msg-msg-msg
+------------------
+Topic #1
+
+Topic #2
+------------------
+Partition #1
+Partition #2
+Partition #3
+------------------
+Topic #2
+
+Account: {id: 1, balance: 120} - 10.00
+Account: {id: 1, balance: 100} - 11.00
+Account: {id: 1, balance: 70} - 12.00
+Account: {id: 1, balance: 120} - 13.00
+
+
+Event 1: AccountCreated {id: 1}    - 10
+Event 2: MoneyDeposited {id: 1, amount: 100} - 11
+Event 3: MoneyWithdrawn {id: 1, amount: 30} - 12
+Event 4: MoneyDeposited {id: 1, amount: 50} - 13
+Event 4:
+Event 4:
+Snapshot:  {balance: 500} (после 50 событий)
+Events 101-150: +100, -50, +200. +1000 . -550
+Event 4:
+Event 4:
+Event 4:
+Event 4:
+
 
 
 
