@@ -35,6 +35,6 @@ public class UserRepository {
     }
 
     public boolean existsById(Long id) {
-        return storage.containsKey(id);
+        return !storage.containsKey(id);
     }
 }

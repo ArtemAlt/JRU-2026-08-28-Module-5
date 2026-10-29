@@ -270,13 +270,63 @@ Event 4:
 Event 4:
 Event 4:
 Event 4:
+--------------------
+Order Service ? orders_db  - https
+Payment Service ? payments_db - https
+Product Service ? products_db - https
 
+TrxService - https -> trx init - 2PC
+--------------------
+BASE
+-------------
+SAGS
 
+Orchestrator (S init) -> WS -ok> Orc
+            WS
+            PS Osr -> Ps -ok-> Orc
+            DS Orc -> DS - ok-> S closed
 
+S( init) -> WS -ok> Orc
+Osr -> Ps -not ok-> Orc -> com -> WS ->  S closed
+---------------
+AccountService
 
+CREATE TABLE accounts (
+    id BIGSERIAL PRIMARY KEY,
+    user_id VARCHAR(255),
+    balance DECIMAL(19, 2) NOT NULL,
+    version BIGINT DEFAULT 0
+);
 
+CREATE TABLE transfers (
+    id VARCHAR(255) PRIMARY KEY,
+    from_account_id BIGINT,
+    to_account_id BIGINT,
+    amount DECIMAL(19, 2),
+    status VARCHAR(20),  -- PENDING, RESERVED, COMPLETED, FAILED, RELEASED
+    created_at TIMESTAMP
+);
 
+Transfer Service
+--------
+account A from
+account B to
+amount
+--------
+Transfer OUT AccountService
+ - проверим достаточно ли средств А
+ - резервируем сумму на счета А
+ - запись в БД о событие (transaction outbox) RESERVED
+ - отправить событие в Transfer Service
 
+Transfer In Transfer Service
+ - Дедубликация
+ - проверить доступность счета В
+ - переводим денег
+ - уведомляем А об успешном / не успешном событии
+                    ConfirmTransfer/ ReleaseTransfer
+                    COMPLETED / RELEASED
+-----------
 
 
 

@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService{
     }
 
     public User updateUser(Long id, User user) {
-        if (!repository.existsById(id)) {
+        if (repository.existsById(id)) {
             throw new NoSuchElementException("User not found");
         }
         user.setId(id);
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService{
     }
 
     public void deleteUser(Long id) {
-        if (!repository.existsById(id)) {
+        if (repository.existsById(id)) {
             throw new NoSuchElementException("User not found");
         }
         repository.deleteById(id);
