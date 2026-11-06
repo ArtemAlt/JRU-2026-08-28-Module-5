@@ -16,6 +16,11 @@ app:
   user:
     admin: "admin"
   name: "My-App"
+  security:
+    jwt:
+      secret: "myPrivateKeyForJwtAuthentication!0987654321"
+      expiration-ms: 3600000
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bankdb
