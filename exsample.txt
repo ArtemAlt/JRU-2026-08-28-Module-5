@@ -341,7 +341,9 @@ DTO
 Client
 Orchestrator
 Controller
-
+-------------------
+JWT
+Header.Payload.Signature
 
 
 

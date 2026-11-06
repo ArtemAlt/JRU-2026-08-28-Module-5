@@ -39,3 +39,7 @@ logging:
     org.hibernate.SQL: DEBUG
 server:
   port: ${SERVER_PORT:8080}
+
+jwt:
+  secret: "string-secret-at-least-256-bits-long"
+  access-token-validity-ms: 900000
