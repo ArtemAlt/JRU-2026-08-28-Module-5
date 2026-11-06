@@ -1,0 +1,24 @@
+###
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "admin2",
+  "password": "admin2",
+  "roles": ["ADMIN"]
+}
+
+###
+GET http://localhost:8080/api/auth/me
+Authorization: Bearer #токен
+###
+GET http://localhost:8080/api/auth/admin
+Authorization: Bearer #токен
+###
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin2",
+  "password": "admin2"
+}

@@ -35,4 +35,16 @@ public class AppUserService {
         appUser.setRoles(rolesFounded);
         return userRepository.save(appUser);
     }
+
+    // Добавлен метод для верификации пользователя
+    public AppUser verifyUser(String username, String rawPassword) {
+        AppUser appUser = userRepository.findByUsername(username).orElseThrow(() ->
+                new IllegalArgumentException("Invalid username or  password"));
+
+        if(!passwordEncoder.matches(rawPassword, appUser.getPassword())) {
+            throw new IllegalArgumentException("Invalid username or password");
+        }
+        return appUser;
+    }
+
 }
