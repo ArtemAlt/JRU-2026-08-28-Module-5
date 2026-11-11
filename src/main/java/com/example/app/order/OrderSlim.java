@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class OrderSlim {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,19 +27,19 @@ public class Order {
     private BigDecimal totalAmount;
 
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private OrderStatus status;
 
     // Обязательно: конструктор без аргументов
-    public Order() {}
+    public OrderSlim() {}
 
-    public Order(String customerName, BigDecimal totalAmount) {
+    public OrderSlim(String customerName, BigDecimal totalAmount) {
         this.customerName = customerName;
         this.totalAmount = totalAmount;
-        this.createdAt = LocalDateTime.now();
+        this.created_at = LocalDateTime.now();
         this.status = OrderStatus.NEW;
     }
 
@@ -53,8 +53,8 @@ public class Order {
     public BigDecimal getTotalAmount() { return totalAmount; }
     public void setTotalAmount(BigDecimal totalAmount) { this.totalAmount = totalAmount; }
 
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public LocalDateTime getCreated_at() { return created_at; }
+    public void setCreated_at(LocalDateTime createdAt) { this.created_at = createdAt; }
 
     public OrderStatus getStatus() { return status; }
     public void setStatus(OrderStatus status) { this.status = status; }

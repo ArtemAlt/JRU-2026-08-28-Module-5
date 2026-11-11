@@ -8,12 +8,10 @@ import com.example.app.service.UserServiceImpl;
 import java.util.List;
 import java.util.Scanner;
 
-@Controller
 public class UserController {
     private final UserServiceImpl service;
 
-    @Autowired
-    public UserController(UserServiceImpl service) {
+   public UserController(UserServiceImpl service) {
 //        System.out.println("[UserController] UserService created with " + service.getClass().getSimpleName());
         this.service = service;
     }

@@ -27,6 +27,7 @@ public class SecurityConfig {
                 auth ->
                auth
                        .requestMatchers("/api/v2/hello").permitAll()
+                       .requestMatchers("/actuator/*").permitAll()
                        .requestMatchers("/categories/**").hasRole("ADMIN")
                .anyRequest().authenticated()
                )

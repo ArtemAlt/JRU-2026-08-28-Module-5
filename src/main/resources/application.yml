@@ -19,12 +19,12 @@ app:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bankdb
-    username: ${DB_USER}
+    username: ${DB_USER:admin}
     password: secret
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:
@@ -43,3 +43,16 @@ server:
 jwt:
   secret: "string-secret-at-least-256-bits-long"
   access-token-validity-ms: 900000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, env, prometheus
+  endpoint:
+    health:
+      show-details: always
+    env:
+      show-values: always
+    metrics:
+      enabled: true

@@ -19,12 +19,12 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long userId;
-    private BigDecimal totalAmount;
+    private BigDecimal total_amount;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
     private String sagaId;
     private String correlationId;
-    private Instant createdAt;
+    private Instant created_at;
     private Instant updatedAt;
 
     public Order(CreateOrderRequest request) {
@@ -50,12 +50,12 @@ public class Order {
         this.userId = userId;
     }
 
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
+    public BigDecimal getTotal_amount() {
+        return total_amount;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setTotal_amount(BigDecimal totalAmount) {
+        this.total_amount = totalAmount;
     }
 
     public OrderStatus getStatus() {
@@ -82,12 +82,12 @@ public class Order {
         this.correlationId = correlationId;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
+    public Instant getCreated_at() {
+        return created_at;
     }
 
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
+    public void setCreated_at(Instant createdAt) {
+        this.created_at = createdAt;
     }
 
     public Instant getUpdatedAt() {

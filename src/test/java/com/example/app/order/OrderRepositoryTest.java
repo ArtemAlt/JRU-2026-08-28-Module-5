@@ -18,12 +18,12 @@ class OrderRepositoryTest extends AbstractIntegrationTest {
     public void testFindByCustomerName() {
         String customerName = "James";
         orderRepository.saveAll(List.of(
-                new Order(customerName, new BigDecimal("100.00")),
-                new Order(customerName, new BigDecimal("250.00")),
-                new Order("Jon", new BigDecimal("300.00"))
+                new OrderSlim(customerName, new BigDecimal("100.00")),
+                new OrderSlim(customerName, new BigDecimal("250.00")),
+                new OrderSlim("Jon", new BigDecimal("300.00"))
         ));
 
-        List<Order> orders = orderRepository.findByCustomerName(customerName);
+        List<OrderSlim> orders = orderRepository.findByCustomerName(customerName);
 
         assertThat(orders).hasSize(2);
         assertThat(orders.get(0).getCustomerName()).isEqualTo(customerName);
