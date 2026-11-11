@@ -19,7 +19,7 @@ app:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bankdb
-    username: ${DB_USER}
+    username: admin
     password: secret
     driver-class-name: org.postgresql.Driver
   jpa:
@@ -38,4 +38,4 @@ logging:
   level:
     org.hibernate.SQL: DEBUG
 server:
-  port: ${SERVER_PORT:8080}
+  port: 8080

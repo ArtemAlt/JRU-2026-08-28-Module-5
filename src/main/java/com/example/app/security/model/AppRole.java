@@ -5,10 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Table(name = "app_role")
-public class AppRole {
+public class AppRole implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +31,13 @@ public class AppRole {
         return name;
     }
 
+
     public void setName(String role) {
         this.name = role;
+    }
+
+    @Override
+    public String getAuthority() {
+        return name;
     }
 }

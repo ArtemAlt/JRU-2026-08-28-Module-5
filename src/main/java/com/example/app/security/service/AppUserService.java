@@ -4,9 +4,15 @@ import com.example.app.security.model.AppRole;
 import com.example.app.security.model.AppUser;
 import com.example.app.security.repositories.AppRoleRepository;
 import com.example.app.security.repositories.AppUserRepository;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -35,4 +41,5 @@ public class AppUserService {
         appUser.setRoles(rolesFounded);
         return userRepository.save(appUser);
     }
+
 }
