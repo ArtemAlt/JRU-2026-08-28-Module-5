@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
-public class SecurityController { //todo запустить что б работало
+public class SecurityController { //todo запустить что б работало + реализовать получение jwt + проверить как работает /admin через jwt + ** реализовать авторефреш
     private final AppUserService service;
     private final AuthenticationManager authenticationManager;
     private final HttpSessionSecurityContextRepository contextRep;
