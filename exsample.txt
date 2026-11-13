@@ -119,7 +119,7 @@ Circular Breaker
 -------------------------------
 CONFIG SERVER + хранилище секретов (тест - прод)
 -----------------------------
-DISTRIBUTED TRACING (сквозная трассировка)
+DISTRIBUTED TRACING (сквозная трассировка) Sleuth
 Создать заказ
 UI (traceID = abc123) spanId: A
     AG - traceID = abc123  10 ms   spanId:B(parent:A)
@@ -344,9 +344,10 @@ Controller
 -------------------
 JWT
 Header.Payload.Signature
-
-
-
+--------------
+CDCT
+Consumer-Driven Contract Testing
+Pact
 
 
 
