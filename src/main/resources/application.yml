@@ -19,7 +19,7 @@ app:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bankdb
-    username: ${DB_USER:admin}
+    username: ${DB_USER}
     password: secret
     driver-class-name: org.postgresql.Driver
   jpa:
@@ -38,7 +38,7 @@ logging:
   level:
     org.hibernate.SQL: DEBUG
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT}
 
 jwt:
   secret: "string-secret-at-least-256-bits-long"

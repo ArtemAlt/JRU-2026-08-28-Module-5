@@ -348,6 +348,61 @@ Header.Payload.Signature
 CDCT
 Consumer-Driven Contract Testing
 Pact
+-----------------------
+
+CI / CD
+- jar
+- ssh -> VM (env)
+- copy
+- stop old
+- start new
+
+Continuous Integration
+
+- PR (MR)
+- main / develop / trunk
+- build + test
+--- проверить что тесты прошли и сборка успешна
+- уведомлени€
+
+Continuous Delivery / Deployment
+- jar (иной артефакт Docker образ)
+- установить на целевой ресурс (VM / Docker Swarm / K8s / OS)
+
+-- установить на целевой ресурс (VM / Docker Swarm / K8s / OS) - тестовый полигон + ” // java -jar app.jar -Dspring.config.1=1 -Dspring.config.2=2
+-- автоматически провод€тс€ доп проверки CDCT, AT, Jira + ”
+-- установить на целевой ресурс (VM / Docker Swarm / K8s / OS) - пром полигон +” // java -jar app.jar -Dspring.config.1=3 -Dspring.config.2=4
+
+----------------------------------------------
+Configuration Store
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
